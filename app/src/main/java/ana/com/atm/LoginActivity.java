@@ -29,7 +29,6 @@ public class LoginActivity extends AppCompatActivity {
         if ("jack".equals(user) && "1234".equals(password)) {
             setResult(RESULT_OK);
             getSharedPreferences("atm", MODE_PRIVATE).edit().putString("USERID", user).apply();
-
             finish();
         }
 
