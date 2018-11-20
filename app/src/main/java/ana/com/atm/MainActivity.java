@@ -18,10 +18,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onClick(View view) {
-        Intent intent = new Intent(this,LoginActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -30,8 +26,15 @@ public class MainActivity extends AppCompatActivity {
             if(resultCode!=RESULT_OK){
                finish();
             }else{
+                String nick = getSharedPreferences("nick",MODE_PRIVATE).getString("nickString",null);
+                int age = getSharedPreferences("age",MODE_PRIVATE).getInt("ageString",0);
+                int gender = getSharedPreferences("gender",MODE_PRIVATE).getInt("genderString",0);
+                login=true;
+                if(nick==null||age==0||gender==0){
                 Intent nickName = new Intent(this,NicknameActivity.class);
                 startActivity(nickName);
+                }
+
             }
         }
     }
