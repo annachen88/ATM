@@ -13,9 +13,9 @@ public class User {
     SharedPreferences settings;
     boolean valid = false;
 
-    public User(Context context){
+    public User(Context context) {
         this.context = context;
-        settings = context.getSharedPreferences("user",Context.MODE_PRIVATE);
+        settings = context.getSharedPreferences("user", Context.MODE_PRIVATE);
     }
 
     public String getId() {
@@ -73,9 +73,10 @@ public class User {
     public void setAddress(String address) {
         this.address = address;
     }
-    
+
 
     public boolean isValid() {
+        valid = getNickName() != null && getAge() != 0 && getGender() != 0;
         return valid;
     }
 
