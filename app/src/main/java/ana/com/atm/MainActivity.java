@@ -10,7 +10,7 @@ import android.widget.ListView;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private static final int RC_LOGIN = 100;
     boolean login = false;
     @Override
@@ -37,13 +37,16 @@ public class MainActivity extends AppCompatActivity {
                finish();
             }else{
                 login=true;
-                String nick = getSharedPreferences("nick",MODE_PRIVATE)
-                        .getString("nickString",null);
-                int age = getSharedPreferences("age",MODE_PRIVATE)
-                        .getInt("ageString",0);
-                int gender = getSharedPreferences("gender",MODE_PRIVATE)
-                        .getInt("genderString",0);
-                if(nick==null||age==0||gender==0){
+//                user.getGender();
+//                user.getAge();
+//                user.getNickName();
+//                String nick = getSharedPreferences("nick",MODE_PRIVATE)
+//                        .getString("nickString",null);
+//                int age = getSharedPreferences("age",MODE_PRIVATE)
+//                        .getInt("ageString",0);
+//                int gender = getSharedPreferences("gender",MODE_PRIVATE)
+//                        .getInt("genderString",0);
+                if(!user.isValid()){
                 Intent nickName = new Intent(this,NicknameActivity.class);
                 startActivity(nickName);
                 }
