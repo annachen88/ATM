@@ -2,6 +2,7 @@ package ana.com.atm;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -43,7 +44,7 @@ public class AgeActivity extends BaseActivity {
     }
 
     class AgeAdapter extends RecyclerView.Adapter<AgeAdapter.AgeHolder> {
-        TextView textView;
+
 
         @NonNull
         @Override
@@ -54,7 +55,10 @@ public class AgeActivity extends BaseActivity {
 
         @Override
         public void onBindViewHolder(@NonNull AgeHolder holder, int position) {
-
+        holder.textView.setText(age[position]+"");
+        if(age[position]==20){
+            holder.textView.setTextColor(Color.BLUE);
+        }
         }
 
         @Override
@@ -63,6 +67,7 @@ public class AgeActivity extends BaseActivity {
         }
 
         class AgeHolder extends RecyclerView.ViewHolder {
+            TextView textView;
             public AgeHolder(View itemView) {
                 super(itemView);
                 textView = itemView.findViewById(R.id.tv_age);
