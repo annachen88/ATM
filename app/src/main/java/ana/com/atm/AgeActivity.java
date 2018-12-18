@@ -13,14 +13,17 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
+
 public class AgeActivity extends BaseActivity {
     int[] age = {19, 20, 21, 22, 23, 24, 25};
-
+    EditText edAge ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_age);
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        edAge = findViewById(R.id.age);
+        RecyclerView  recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new AgeAdapter());
@@ -29,7 +32,7 @@ public class AgeActivity extends BaseActivity {
 
     public void next2(View view) {
         // edAge = findViewById();
-        int age = Integer.parseInt(((EditText) findViewById(R.id.age)).getText().toString());
+        int age = Integer.parseInt(edAge.getText().toString());
         user.setAge(age);
 //        getSharedPreferences("age",MODE_PRIVATE)
 //                .edit()
@@ -54,11 +57,19 @@ public class AgeActivity extends BaseActivity {
         }
 
         @Override
-        public void onBindViewHolder(@NonNull AgeHolder holder, int position) {
+        public void onBindViewHolder(@NonNull AgeHolder holder, final int position) {
         holder.textView.setText(age[position]+"");
         if(age[position]==20){
             holder.textView.setTextColor(Color.BLUE);
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.util.Log.d("AgeActivity","onClick"+age[position]);
+                edAge.setText(age[position]+"");
+//TODO:setText & color
+            }
+        });
         }
 
         @Override

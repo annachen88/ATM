@@ -21,6 +21,8 @@ public class LoginActivity extends AppCompatActivity {
         String userId = getSharedPreferences("atm", MODE_PRIVATE).getString("USERID", "");
        // userId.getString("USERID", "");
         u.setText(userId);
+        MyDBHelper helper = new MyDBHelper(this,"expense.db",null,1);
+
     }
 
     public void login(View view) {
